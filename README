@@ -1,0 +1,17 @@
+1. The supported OS is Ubuntu Server 9.10, Install Ubuntu Server 9.10 first.
+2. Install following packages use apt-get install:
+   1) gstreamer0.10-plugins-base
+   2) gstreamer0.10-plugins-good
+   3) gstreamer0.10-plugins-bad
+   4) gstreamer0.10-plugins-ugly-multiverse
+   5) gstreamer0.10-ffmpeg
+   6) python-gst0.10
+3. Install python-setuptools use apt-get install, which have ease_install tool.
+   apt-get install python-setuptools
+4. Install web.py:
+   easy_install web.py
+5. Install v4l2
+   easy_install v4l2
+6. optional, start rainbow on boot. edit /etc/init.d/rc.local and add line:
+   cd /path/to/rainbow && ./rainbow.py start
+7. reboot system, and visit http://rainbow.host.ip:8080/
