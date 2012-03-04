@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 # Dynamically calculate the version based on rainbowenc.VERSION.
-version = __import__('django').get_version()
+version = __import__('rainbowenc').get_version()
 
 setup(
     name = "Rainbowenc",
@@ -11,7 +11,12 @@ setup(
     author_email = 'dqzhangp@163.com',
     description = 'A real time encoder based on gstreamer',
     #download_url = '',
-    packages = packages,
+    packages = ['rainbowenc', 'rainbowenc.templates', 'rainbowenc.static'],
+    package_data = {
+        'rainbowenc' : ['LICENSE'],
+        'rainbowenc.templates': ['rainbowenc/templates/*'],
+        'rainbowenc.static': ['rainbowenc/static/*']},
+    scripts=['rainbowenc/rainbowenc.py'],
     classifiers = [
         'Development Status :: Under development',
         'Intended Audience :: Users',

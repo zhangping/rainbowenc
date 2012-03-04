@@ -1,0 +1,52 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <link href="static/gui.css" rel="stylesheet" type="text/css" />
+  <title>Rainbow</title>
+  <style type="text/css">
+  html,body {
+    height: 100%;
+    width: 100%;
+  }
+  </style>
+</head>
+<body onload='document.iform.user.focus();'>
+  <div id="loginpage">
+    <table height="100%" width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tbody>
+        <tr>
+          <td align="center">
+            <form name='iform' action=/login method=post>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div id="loginbox">
+                        <table>
+                          <tr>
+                            <td>name: </td>
+                            <td><input type=text name='user'></td>
+                          </tr>
+                          <tr>
+                            <td>password: </td>
+                            <td><input type="password" name=passwd></td>
+                          </tr>
+                          <tr>
+                            <td align="center" colspan="2"><input type=submit value=Login></td>
+                          </tr>
+                        </table>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
