@@ -13,7 +13,6 @@ setup(
     #download_url = '',
     packages = ['rainbowenc', 'rainbowenc.templates', 'rainbowenc.static'],
     package_data = {
-        'rainbowenc' : ['LICENSE'],
         'rainbowenc.templates': ['rainbowenc/templates/*'],
         'rainbowenc.static': ['rainbowenc/static/*']},
     scripts=['rainbowenc/rainbowenc.py'],
