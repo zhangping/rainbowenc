@@ -15,7 +15,7 @@ setup(
         'v4l2',],
     data_files = [['rainbowenc/static', ['rainbowenc/static/jquery.js']],
         ['rainbowenc/templates', ['rainbowenc/templates/login.html']],],
-    scripts=['rainbowenc/rainbowenc.py'],
+    scripts=['rainbowenc/bin/rainbow.py'],
     classifiers = [
         'Development Status :: Under development',
         'Intended Audience :: Users',

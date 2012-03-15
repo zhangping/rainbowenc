@@ -1,9 +1,8 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from rainbowenc import daemon
+from rainbowenc import *
 
-class rainbowenc (daemon):
+class rainbowenc (Daemon):
         def run (self):
                 while True:
                         time.sleep (1)

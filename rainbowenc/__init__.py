@@ -29,3 +29,7 @@ def get_version(version=None):
         sub = mapping[version[3]] + str(version[4])
 
     return main + sub
+
+import daemon
+
+from daemon import *
