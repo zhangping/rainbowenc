@@ -1,5 +1,5 @@
 """
-A simple unix/linux daemon in Python by Sander Marechal.
+Originally based on A simple unix/linux daemon in Python by Sander Marechal.
 http://www.jejik.com/articles/2007/02/a_simple_unix_linux_daemon_in_python/
 """
 
@@ -24,6 +24,7 @@ class Daemon:
 		Programming in the UNIX Environment" for details (ISBN 0201563177)
 		http://www.erlenstar.demon.co.uk/unix/faq_2.html#SEC16
 		"""
+                sys.stderr.write ("daemonizing ...\n")
 		try: 
 			pid = os.fork() 
 			if pid > 0:
@@ -70,6 +71,7 @@ class Daemon:
 		"""
 		Start the daemon
 		"""
+                sys.stderr.write ("starting rainbow encoder ...\n")
 		# Check for a pidfile to see if the daemon already runs
 		try:
 			pf = file(self.pidfile,'r')
