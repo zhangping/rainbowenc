@@ -1,13 +1,19 @@
 # -*- coding: utf-8 -*-
 
+import logging
 from rainbowenc import *
 
 class rainbowenc (Daemon):
+        logger = logging.getLogger ('rainbow')
         def run (self):
+                self.logger.info ('rainbowenc started.\n')
                 while True:
                         time.sleep (1)
 
 if __name__ == "__main__":
+        logging.basicConfig(filename='/var/log/rainbow.log',
+                format='%(asctime)s - %(module)s.%(funcName)s - %(levelname)s - %(message)s',
+                level=logging.DEBUG)
         service = rainbowenc ('/var/run/rainbow.pid')
         if len(sys.argv) == 2:
                 if 'start' == sys.argv[1]:
