@@ -13,8 +13,7 @@ setup(
     packages = find_packages (),
     install_requires = [
         'v4l2',],
-    data_files = [['rainbowenc/static', ['rainbowenc/static/jquery.js']],
-        ['rainbowenc/templates', ['rainbowenc/templates/login.html']],],
+    data_files = [['rainbowenc/static', ['rainbowenc/static/login.html']],],
     scripts=['rainbowenc/bin/rainbow.py'],
     classifiers = [
         'Development Status :: Under development',

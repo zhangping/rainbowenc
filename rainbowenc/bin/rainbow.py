@@ -6,7 +6,7 @@ from rainbowenc import *
 class rainbowenc (Daemon):
         logger = logging.getLogger ('rainbow')
         def run (self):
-                self.logger.info ('rainbowenc started.\n')
+                self.logger.info ('rainbowenc started.')
                 while True:
                         time.sleep (1)
 
