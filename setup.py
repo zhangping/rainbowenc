@@ -13,8 +13,13 @@ setup(
         packages = find_packages (),
         install_requires = [
                 'web.py',],
-        data_files = [['rainbowenc/static', ['rainbowenc/static/login.html']],],
-        scripts=['rainbowenc/bin/rainbow.py'],
+        data_files = [
+                ['/usr/share/rainbowenc',
+                        ['rainbowenc/rainbow.py']],
+                ['/usr/share/rainbowenc/templates',
+                        ['rainbowenc/templates/login.html']],
+                ['/usr/share/rainbowenc/static',
+                        ['rainbowenc/static/gui.css']],],
         classifiers = [
                 'Development Status :: Under development',
                 'Intended Audience :: Users',

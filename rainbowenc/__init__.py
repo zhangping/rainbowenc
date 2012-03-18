@@ -30,6 +30,3 @@ def get_version(version=None):
 
     return main + sub
 
-import daemon
-
-from daemon import *
