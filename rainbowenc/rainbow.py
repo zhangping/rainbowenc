@@ -16,7 +16,7 @@ if __name__ == "__main__":
                 format='%(asctime)s - %(module)s.%(funcName)s - %(levelname)s - %(message)s',
                 level=logging.DEBUG)
         service = rainbowenc ('/var/run/rainbow.pid')
-        startwebui ()
+        #startwebui ()
         if len(sys.argv) == 2:
                 if 'start' == sys.argv[1]:
                         sys.argv[1] = '8080'
