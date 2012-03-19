@@ -1,6 +1,7 @@
 import web
 import logging
 import os
+import hashlib
 
 web.config.debug = True
 web.config.session_parameters['timeout'] = 300 # 5 * 60 seconds

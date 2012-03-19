@@ -15,7 +15,8 @@ setup(
                 'web.py',],
         data_files = [
                 ['/usr/share/rainbowenc',
-                        ['rainbowenc/rainbow.py']],
+                        ['rainbowenc/rainbow.py',
+                        'rainbowenc/passwd']],
                 ['/usr/share/rainbowenc/templates',
                         ['rainbowenc/templates/login.html']],
                 ['/usr/share/rainbowenc/static',
