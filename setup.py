@@ -19,7 +19,9 @@ setup(
                 ['/usr/share/rainbowenc/templates',
                         ['rainbowenc/templates/login.html']],
                 ['/usr/share/rainbowenc/static',
-                        ['rainbowenc/static/gui.css']],],
+                        ['rainbowenc/static/gradient.gif',
+                        'rainbowenc/static/login_bg.png',
+                        'rainbowenc/static/gui.css']],],
         classifiers = [
                 'Development Status :: Under development',
                 'Intended Audience :: Users',
