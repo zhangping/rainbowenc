@@ -304,8 +304,6 @@ div#headernavbar {
 div#pagecontent {
 	background: #FFFFFF url(gradient.gif) repeat-x scroll left top;
 	border: 1px solid #DEDBD1;
-	margin: 20px 25px 10px 25px;
-	padding: 0 15px 15px 15px;
 }
 div#submit {
 	margin-top: 10px;
