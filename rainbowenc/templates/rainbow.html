@@ -1,0 +1,178 @@
+$def with (osversion, plateform, uptime, loadavg, header, headernavbar, footer)
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <link href="/static/gui.css" rel="stylesheet" type="text/css" />
+    <link href="/static/navbar.css" rel="stylesheet" type="text/css" />
+    <link href="/static/tabs.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/static/gui.js"></script>
+    <script type="text/javascript" src="/static/navbar.js"></script>
+    <script type="text/javascript">
+      var mem_usage = [];
+      var cpu_usage = [];
+
+      $$(document).ready(function() {
+        setInterval(function() {
+          $$.ajax({
+            url: "/systime",
+            type: "POST",
+            timeout: 1000,
+            success: function(xml){
+              $$("#date").html(xml);
+            }
+          });
+        }, 2000);
+
+        setInterval(function() {
+          $$.ajax({
+            url: "/uptime",
+            type: "POST",
+            timeout: 1000,
+            success: function(xml){
+              $$("#uptime").html(xml);
+            }
+          });
+        }, 60000);
+ 
+        setInterval(function() {
+          $$.ajax({
+            url: "/loadavg",
+            type: "POST",
+            timeout: 1000,
+            success: function(xml){
+              $$("#loadavg").html(xml);
+            }
+          });
+        }, 2000);
+
+        setInterval(function() {
+          $$.ajax({
+            url: "/memusage",
+            type: "POST",
+            timeout: 1000,
+            success: function(result) {
+              if (mem_usage.length == 61) { //max numbers of point
+                mem_usage.splice(0,1);
+                for (i=0;i<60;i++){
+                  mem_usage[i][0] -= 1;
+                }
+              }
+              mem_usage.push([mem_usage.length, result]);
+              $$.plot($$("#memusage"),
+                      [{label: "Memory Usage (MB)", data: mem_usage}],
+                      {
+                        xaxis: { min: 0, max: 60 },
+                      }
+                     );
+            }
+          });
+        }, 2000);
+
+        setInterval(function() {
+          $$.ajax({
+            url: "/cpusage",
+            type: "POST",
+            timeout: 2000,
+            success: function(result) {
+              if (cpu_usage.length == 61) { //max numbers of point
+                cpu_usage.splice(0,1);
+                for (i=0;i<60;i++){
+                  cpu_usage[i][0] -= 1;
+                }
+              }
+              cpu_usage.push([cpu_usage.length, result]);
+              $$.plot($$("#cpusage"),
+                      [{label: "CPU Usage (%)", data: cpu_usage}],
+                      {
+                        xaxis: { min: 0, max: 60 },
+                      }
+                     );
+            }
+          });
+        }, 2000);
+
+      });
+    </script>
+  </head>
+  <body bgcolor="DarkSeaGreen">
+    $:header
+
+    $:headernavbar
+
+    <div id="pagecontent">
+      <table width="100%" border="0" cellspacing="0" cellpadding="2">
+        <tr valign="top">
+          <td>
+            <table width="100%" border="0" cellpadding="10" cellspacing="0">
+              <tr>
+                <td>
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <td>&nbsp;</td>
+                  </table>
+                  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td class="tabcont">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td colspan="2" class="listtopic">System information</td>
+                          </tr>
+                          <tr>
+                            <td width="25%" class="vncellt">Version</td>
+                            <td width="75%" class="listr">1.0.0 sail (revision)</td>
+                          </tr>
+                          <tr>
+                            <td width="25%" class="vncellt">OS Version</td>
+                            <td width="75%" class="listr">$osversion</td>
+                          </tr>
+                          <tr>
+                            <td width="25%" class="vncellt">Platform</td>
+                            <td width="75%" class="listr">$plateform</td>
+                          </tr>
+                          <tr>
+                            <td width="25%" class="vncellt">System time</td>
+                            <td width="75%" class="listr">
+                              <span id="date">Loading...</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td width="25%" class="vncellt">Uptime</td>
+                            <td width="75%" class="listr">
+                              <span name="uptime" id="uptime">$uptime</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td width="25%" class="vncellt">CPU usage</td>
+                            <td width="75%" class="listr">
+                              <div id="cpusage" style="width:600px;height:100px;">Loading...</div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td width="25%" class="vncellt">Memory usage</td>
+                            <td width="75%" class="listr">
+                              <div id="memusage" style="width:600px;height:100px;">Loading...</div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td width="25%" class="vncellt" >Load averages</td>
+                            <td width="75%" class="listr">
+                              <span name="loadavg" id="loadavg">$loadavg</span>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    $:footer
+
+  </body>
+</html>

@@ -1,0 +1,80 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+def get_header():
+    return """
+    <div id="header">
+      <div id="headerlogo">
+        <a title="www.doorsolutions.cn" href="http://www.doorsolutions.cn" target="_blank"><img src="/static/header_logo.png" alt="logo" /></a>
+      </div>
+      <div id="headerrlogo">
+        <div class="hostname">
+          <span>http://www.doorsolutions.cn&nbsp;</span>
+        </div>
+      </div>
+    </div>"""
+
+def get_headernavbar():
+    return """
+    <div id="headernavbar">
+      <ul id="navbarmenu">
+        <li>
+	  <a href="rainbow.html" onmouseover="mopen('system')" onmouseout="mclosetime()">System</a>
+          <div id="system" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="change_passwd.html" target="_self" title="Change Password">Change Passsword</a>
+            <a href="netconfigure.html" target="_self" title="LAN Management">LAN Management</a>
+            <!--a href="system_backup.php" target="_self" title="Backup/Restore">Backup/Restore</a-->
+            <!--a href="system_defaults.php" target="_self" title="Factory defaults">Factory defaults</a-->
+            <span class="tabseparator">&nbsp;</span>
+            <a href="reboot.html" target="_self" title="Reboot">Reboot</a>
+            <a href="shutdown.html" target="_self" title="Shutdown">Shutdown</a>
+            <a href="logout" target="_self" title="Logout">Logout</a>
+          </div>
+        </li>
+        <li>
+	  <a href="channel.html" onmouseover="mopen('encoder')" onmouseout="mclosetime()">Channel</a>
+	  <div id="encoder" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="channel.html" target="_self" title="Channel Management">Channel Management</a>
+            <a href="encoder.html" target="_self" title="Encoder">Encoder Management</a>
+            <a href="overlay.html" target="_self" title="Mark">Overlay Management</a>
+          </div>
+        </li>
+        <!--li>
+          <a href="rainbow.html" onmouseover="mopen('advanced')" onmouseout="mclosetime()">Advanced</a>
+            <div id="advanced" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="system_edit.php" target="_self" title="File Editor">File Editor</a>
+            <a href="quixplorer" target="_blank" title="File Manager">File Manager</a>
+            <span class="tabseparator">&nbsp;</span>
+            <a href="exec.php" target="_self" title="Command">Command</a>
+          </div>
+        </li-->
+        <li>
+	  <a href="rainbow.html" onmouseover="mopen('status')" onmouseout="mclosetime()">Status</a>
+          <div id="status" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="rainbow.html" target="_self" title="System">System</a>
+            <a href="channelstatus.html" target="_self" title="Encoder">Encoder Channel</a>
+            <a href="netstatus.html" target="_self" title="Network">Network Interface</a>
+          </div>
+        </li>
+        <li>
+          <a href="rainbow.html" onmouseover="mopen('help')" onmouseout="mclosetime()">Help</a>
+          <div id="help" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="http://www.doorsolutions.cn" target="_blank" title="Information &amp; Manual">Information &amp; Manual</a>
+            <a href="http://www.doorsolutions.cn" target="_self" title="Release notes">Release notes</a>
+            <a href="http://www.doorsolutions.cn" target="_self" title="License & Credits">License & Credits</a>
+            <a href="http://www.doorsolutions.cn" target="_blank" title="Donate">Donate</a>
+          </div>
+        </li>
+      </ul>
+      <div style="clear:both"></div>
+    </div>"""
+
+def get_footer():
+    return """
+    <div id="pagefooter">
+      <span>
+        <a title="www.doorsolutions.cn" href="http://www.doorsolutions.cn" target="_blank">RainBOW</a>
+         &copy; 2010-2010 by DOOR Solutions. All rights reserved.
+        <a href="http://www.tibet.com/" class="tblnk">&nbsp;</a>
+      </span>
+    </div>"""

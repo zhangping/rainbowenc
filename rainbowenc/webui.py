@@ -3,6 +3,8 @@ import logging
 import os
 import hashlib
 
+from rainbowenc import systat, genpage
+
 web.config.debug = True
 web.config.session_parameters['timeout'] = 300 # 5 * 60 seconds
 web.config.session_parameters['ignore_expiry'] = False
@@ -28,10 +30,19 @@ class LogIn:
                 """
                 HTTP GET method.
                 """
-                self.logger.warning("LogIn:GET")
                 if not session.login:
-                        self.logger.warning("LogIn:login.html")
                         return render.login()
+
+                header = genpage.get_header()
+                headernavbar = genpage.get_headernavbar()
+                footer = genpage.get_footer()
+
+                if name == "" or name == "rainbow.html":
+                        osversion = os.uname()[0] + " " + os.uname()[2] + " " + os.uname()[3]
+                        uptime = systat.get_uptime()
+                        plateform = systat.get_plateform()
+                        loadavg = systat.get_loadavg()
+                        return render.rainbow(osversion, plateform, uptime, loadavg, header, headernavbar, footer)
 
                 if name == "logout":
                         session.login = 0
