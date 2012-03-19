@@ -33,6 +33,7 @@ setup(
                         'rainbowenc/static/listtopic_bg.png',
                         'rainbowenc/static/vncell_bg.png',
                         'rainbowenc/static/header_rlogo.png',
+                        'rainbowenc/static/jquery.js',
                         'rainbowenc/static/navbar.js',
                         'rainbowenc/static/gui.js',
                         'rainbowenc/static/navbar.css',

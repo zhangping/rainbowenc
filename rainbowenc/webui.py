@@ -2,6 +2,7 @@ import web
 import logging
 import os
 import hashlib
+import time
 
 from rainbowenc import systat, genpage
 
@@ -53,6 +54,21 @@ class LogIn:
                 """
                 HTTP POST method.
                 """
+
+                if (session.login == 1) and (name == 'systime'):
+                        return time.ctime()
+
+                if (session.login == 1) and (name == 'uptime'):
+                        return systat.get_uptime()
+
+                if (session.login == 1) and (name == 'loadavg'):
+                        return systat.get_loadavg()
+
+                if (session.login == 1) and (name == 'memusage'):
+                        return systat.get_memusage()
+
+                if (session.login == 1) and (name == 'cpusage'):
+                        return systat.get_cpusage()
 
                 # authenticate and authorized
                 user, passwd = web.input().user, web.input().passwd
