@@ -19,24 +19,24 @@ def get_headernavbar():
     <div id="headernavbar">
       <ul id="navbarmenu">
         <li>
-	  <a href="rainbow.html" onmouseover="mopen('system')" onmouseout="mclosetime()">System</a>
+	  <a href="rainbow.html" onmouseover="mopen('system')" onmouseout="mclosetime()">""" + _("System") + """</a>
           <div id="system" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
-            <a href="change_passwd.html" target="_self" title="Change Password">Change Passsword</a>
-            <a href="netconfigure.html" target="_self" title="LAN Management">LAN Management</a>
+            <a href="change_passwd.html" target="_self" title="Change Password">""" + _("Change Passsword") + """</a>
+            <a href="netconfigure.html" target="_self" title="LAN Management">""" + _("LAN Management") + """</a>
             <!--a href="system_backup.php" target="_self" title="Backup/Restore">Backup/Restore</a-->
             <!--a href="system_defaults.php" target="_self" title="Factory defaults">Factory defaults</a-->
             <span class="tabseparator">&nbsp;</span>
-            <a href="reboot.html" target="_self" title="Reboot">Reboot</a>
-            <a href="shutdown.html" target="_self" title="Shutdown">Shutdown</a>
-            <a href="logout" target="_self" title="Logout">Logout</a>
+            <a href="reboot.html" target="_self" title="Reboot">""" + _("Reboot") + """</a>
+            <a href="shutdown.html" target="_self" title="Shutdown">""" + _("Shutdown") + """</a>
+            <a href="logout" target="_self" title="Logout">""" + _("Logout") + """</a>
           </div>
         </li>
         <li>
-	  <a href="channel.html" onmouseover="mopen('encoder')" onmouseout="mclosetime()">Channel</a>
+	  <a href="channel.html" onmouseover="mopen('encoder')" onmouseout="mclosetime()">""" + _("Channel") + """</a>
 	  <div id="encoder" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
-            <a href="channel.html" target="_self" title="Channel Management">Channel Management</a>
-            <a href="encoder.html" target="_self" title="Encoder">Encoder Management</a>
-            <a href="overlay.html" target="_self" title="Mark">Overlay Management</a>
+            <a href="channel.html" target="_self" title="Channel Management">""" + _("Channel Management") + """</a>
+            <a href="encoder.html" target="_self" title="Encoder">""" + _("Encoder Management") + """</a>
+            <a href="overlay.html" target="_self" title="Mark">""" + _("Overlay Management") + """</a>
           </div>
         </li>
         <!--li>
@@ -49,20 +49,20 @@ def get_headernavbar():
           </div>
         </li-->
         <li>
-	  <a href="rainbow.html" onmouseover="mopen('status')" onmouseout="mclosetime()">Status</a>
+	  <a href="rainbow.html" onmouseover="mopen('status')" onmouseout="mclosetime()">""" + _("Status") + """</a>
           <div id="status" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
-            <a href="rainbow.html" target="_self" title="System">System</a>
-            <a href="channelstatus.html" target="_self" title="Encoder">Encoder Channel</a>
-            <a href="netstatus.html" target="_self" title="Network">Network Interface</a>
+            <a href="rainbow.html" target="_self" title="System">""" + _("System") + """</a>
+            <a href="channelstatus.html" target="_self" title="Encoder">""" + _("Encoder Channel") + """</a>
+            <a href="netstatus.html" target="_self" title="Network">""" + _("Network Interface") + """</a>
           </div>
         </li>
         <li>
-          <a href="rainbow.html" onmouseover="mopen('help')" onmouseout="mclosetime()">Help</a>
+          <a href="rainbow.html" onmouseover="mopen('help')" onmouseout="mclosetime()">""" + _("Help") + """</a>
           <div id="help" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
-            <a href="http://www.doorsolutions.cn" target="_blank" title="Information &amp; Manual">Information &amp; Manual</a>
-            <a href="http://www.doorsolutions.cn" target="_self" title="Release notes">Release notes</a>
-            <a href="http://www.doorsolutions.cn" target="_self" title="License & Credits">License & Credits</a>
-            <a href="http://www.doorsolutions.cn" target="_blank" title="Donate">Donate</a>
+            <a href="http://www.doorsolutions.cn" target="_blank" title="Information &amp; Manual">""" + _("Information &amp; Manual") + """</a>
+            <a href="http://www.doorsolutions.cn" target="_self" title="Release notes">""" + _("Release notes") + """</a>
+            <a href="http://www.doorsolutions.cn" target="_self" title="License & Credits">""" + _("License & Credits") + """</a>
+            <a href="http://www.doorsolutions.cn" target="_blank" title="Donate">""" + _("Donate") + """</a>
           </div>
         </li>
       </ul>
@@ -74,7 +74,7 @@ def get_footer():
     <div id="pagefooter">
       <span>
         <a title="www.doorsolutions.cn" href="http://www.doorsolutions.cn" target="_blank">RainBOW</a>
-         &copy; 2010-2010 by DOOR Solutions. All rights reserved.
+         """ + _("&copy; 2010-2010 by DOOR Solutions. All rights reserved.") + """
         <a href="http://www.tibet.com/" class="tblnk">&nbsp;</a>
       </span>
     </div>"""
