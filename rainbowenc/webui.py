@@ -3,6 +3,7 @@ import logging
 import os
 import hashlib
 import time
+import gettext
 
 from rainbowenc import systat, genpage
 
@@ -19,7 +20,9 @@ urls = (
 
 rainbowebui = web.application(urls, globals())
 session = web.session.Session(rainbowebui, web.session.DiskStore('sessions'), initializer={'login': 0})
-render = web.template.render("/usr/share/rainbowenc/templates")
+gettext.install ('messages', '/usr/share/rainbowenc/i18n', unicode=True)
+gettext.translation ('messages', '/usr/share/rainbowenc/i18n', languages=['zh_CN']).install(True)
+render = web.template.render("/usr/share/rainbowenc/templates", globals={'_':_})
 
 class LogIn:
         """
