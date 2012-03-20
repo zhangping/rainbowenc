@@ -51,7 +51,7 @@ class LogIn:
                         return render.rainbow(osversion, plateform, uptime, loadavg, header, headernavbar, footer)
 
                 if name == "logout":
-                        logger.info ("logout")
+                        logger.info ('logout from %s' % web.ctx.ip)
                         session.login = 0
                         session.kill()
                         raise web.seeother('/')
@@ -81,14 +81,15 @@ class LogIn:
 
                 if user != 'admin':
                         return 'Invalid user name'
-                if hashlib.md5(passwd).hexdigest() != open("passwd").readline():
+                if hashlib.md5(passwd).hexdigest() != open('passwd').readline():
                         return 'Invalid password'
 
                 session.login = 1
+                logger.info ('login from %s' % web.ctx.ip)
                 raise web.seeother('/rainbow.html')
 
 
 def startwebui ():
-        logger.info ("timeout %d" % conf['global']['timeout'])
-        logger.info ("language %s" % conf['global']['language'])
+        logger.info ('timeout %d' % conf['global']['timeout'])
+        logger.info ('language %s' % conf['global']['language'])
         rainbowebui.run ()
