@@ -7,8 +7,10 @@ import gettext
 
 from rainbowenc import systat, genpage
 
+execfile ("/usr/share/rainbowenc/rainbow.conf")
+
 web.config.debug = True
-web.config.session_parameters['timeout'] = 300 # 5 * 60 seconds
+web.config.session_parameters['timeout'] = conf['global']['timeout'] # 5 * 60 seconds
 web.config.session_parameters['ignore_expiry'] = False
 web.config.session_parameters['expired_message'] = """
         <html><head><meta http-equiv=\"refresh\" content=\"0;url=/\"></head><body></body></html>
@@ -23,12 +25,12 @@ session = web.session.Session(rainbowebui, web.session.DiskStore('sessions'), in
 gettext.install ('messages', '/usr/share/rainbowenc/i18n', unicode=True)
 gettext.translation ('messages', '/usr/share/rainbowenc/i18n', languages=['zh_CN']).install(True)
 render = web.template.render("/usr/share/rainbowenc/templates", globals={'_':_})
+logger = logging.getLogger ("rainbow")
 
 class LogIn:
         """
         Web user interface, based on web.py
         """
-        logger = logging.getLogger('rainbow')
 
         def GET (self, name):
                 """
@@ -49,6 +51,7 @@ class LogIn:
                         return render.rainbow(osversion, plateform, uptime, loadavg, header, headernavbar, footer)
 
                 if name == "logout":
+                        logger.info ("logout")
                         session.login = 0
                         session.kill()
                         raise web.seeother('/')
@@ -86,4 +89,6 @@ class LogIn:
 
 
 def startwebui ():
+        logger.info ("timeout %d" % conf['global']['timeout'])
+        logger.info ("language %s" % conf['global']['language'])
         rainbowebui.run ()

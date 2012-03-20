@@ -16,8 +16,7 @@ setup(
         data_files = [
                 ['/usr/share/rainbowenc',
                         ['rainbowenc/rainbow.py',
-                        'rainbowenc/genpage.py',
-                        'rainbowenc/systat.py',
+                        'rainbowenc/rainbow.conf',
                         'rainbowenc/passwd']],
                 ['/usr/share/rainbowenc/templates',
                         ['rainbowenc/templates/login.html',
