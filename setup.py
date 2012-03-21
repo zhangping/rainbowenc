@@ -20,6 +20,8 @@ setup(
                         'rainbowenc/passwd']],
                 ['/usr/share/rainbowenc/templates',
                         ['rainbowenc/templates/login.html',
+                        'rainbowenc/templates/reboot.html',
+                        'rainbowenc/templates/shutdown.html',
                         'rainbowenc/templates/rainbow.html']],
                 ['/usr/share/rainbowenc/static',
                         ['rainbowenc/static/gradient.gif',

@@ -1,0 +1,58 @@
+$def with (header, headernavbar, footer)
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <link href="/static/gui.css" rel="stylesheet" type="text/css" />
+    <link href="/static/navbar.css" rel="stylesheet" type="text/css" />
+    <link href="/static/tabs.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/static/gui.js"></script>
+    <script type="text/javascript" src="/static/navbar.js"></script>
+  </head>
+
+  <body bgcolor="DarkSeaGreen">
+    $:header
+
+    $:headernavbar
+
+    <div id="pagecontent">
+      <table width="100%" border="0" cellspacing="0" cellpadding="2">
+        <tr valign="top">
+          <td>
+            <table width="100%" border="0" cellpadding="10" cellspacing="0">
+              <tr>
+                <td>
+                  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td class="tabcont">
+                        <table width="100%" border="0" cellpadding="6" cellspacing="0">
+                          <tr>
+                            <td colspan="2" class="listtopic">$_("Shutdown")</td>
+                          </tr>
+                          <tr>
+                            <td class="tabcont">
+                              <form action="shutdown" method="post">
+                                <strong>$_("Are you sure you want to shutdown the system?")</strong>
+				<div id="submit">
+                                  <input name="Submit" type="submit" class="formbtn" value="Yes" />
+                                  <input name="Submit" type="submit" class="formbtn" value="No" />
+                                </div>
+                              </form>
+			    </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    $:footer
+  </body>
+</html>

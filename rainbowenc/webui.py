@@ -4,6 +4,7 @@ import os
 import hashlib
 import time
 import gettext
+import subprocess
 
 from rainbowenc import systat, genpage
 
@@ -50,6 +51,12 @@ class LogIn:
                         loadavg = systat.get_loadavg()
                         return render.rainbow(osversion, plateform, uptime, loadavg, header, headernavbar, footer)
 
+                if name == "reboot.html":
+                        return render.reboot(header, headernavbar, footer)
+
+                if name == "shutdown.html":
+                        return render.shutdown(header, headernavbar, footer)
+
                 if name == "logout":
                         logger.info ('logout from %s' % web.ctx.ip)
                         session.login = 0
@@ -75,6 +82,22 @@ class LogIn:
 
                 if (session.login == 1) and (name == 'cpusage'):
                         return systat.get_cpusage()
+
+                if (session.login == 1) and (name == 'reboot'):
+                        reboot_data = web.input()
+                        if (reboot_data.Submit == "Yes"):
+                                subprocess.Popen("reboot")
+                                return _("Reboot")
+                        if (reboot_data.Submit == "No"):
+                                raise web.seeother("/")
+
+                if (session.login == 1) and (name == 'shutdown'):
+                        reboot_data = web.input()
+                        if (reboot_data.Submit == "Yes"):
+                                subprocess.Popen("halt")
+                                return _("Shutdown")
+                        if (reboot_data.Submit == "No"):
+                                raise web.seeother("/")
 
                 # authenticate and authorized
                 user, passwd = web.input().user, web.input().passwd
