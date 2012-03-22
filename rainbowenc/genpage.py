@@ -21,7 +21,8 @@ def get_headernavbar():
         <li>
 	  <a href="rainbow.html" onmouseover="mopen('system')" onmouseout="mclosetime()">""" + _("System") + """</a>
           <div id="system" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
-            <a href="change_passwd.html" target="_self" title="Change Password">""" + _("Change Passsword") + """</a>
+            <a href="changepass.html" target="_self" title="Change Password">""" + _("Change Passsword") + """</a>
+            <a href="selectlang.html" target="_self" title="Select Language">""" + _("Select Language") + """</a>
             <a href="netconfigure.html" target="_self" title="LAN Management">""" + _("LAN Management") + """</a>
             <!--a href="system_backup.php" target="_self" title="Backup/Restore">Backup/Restore</a-->
             <!--a href="system_defaults.php" target="_self" title="Factory defaults">Factory defaults</a-->

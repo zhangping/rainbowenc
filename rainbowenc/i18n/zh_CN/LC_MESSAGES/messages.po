@@ -1,2 +1,175 @@
-msgid "System Infomation"
-msgstr "xitongxinxi"
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2012-03-22 12:27+CST\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: rainbowenc/genpage.py:22 rainbowenc/genpage.py:55
+msgid "System"
+msgstr "xitong"
+
+#: rainbowenc/genpage.py:24
+msgid "Change Passsword"
+msgstr "xiugaimima"
+
+#: rainbowenc/genpage.py:25 rainbowenc/templates/selectlang.html:32
+msgid "Select Language"
+msgstr ""
+
+#: rainbowenc/genpage.py:26
+msgid "LAN Management"
+msgstr ""
+
+#: rainbowenc/genpage.py:30 rainbowenc/templates/reboot.html:31
+#: rainbowenc/webui.py:109
+msgid "Reboot"
+msgstr ""
+
+#: rainbowenc/genpage.py:31 rainbowenc/templates/shutdown.html:31
+#: rainbowenc/webui.py:117
+msgid "Shutdown"
+msgstr ""
+
+#: rainbowenc/genpage.py:32
+msgid "Logout"
+msgstr ""
+
+#: rainbowenc/genpage.py:36
+msgid "Channel"
+msgstr ""
+
+#: rainbowenc/genpage.py:38
+msgid "Channel Management"
+msgstr ""
+
+#: rainbowenc/genpage.py:39
+msgid "Encoder Management"
+msgstr ""
+
+#: rainbowenc/genpage.py:40
+msgid "Overlay Management"
+msgstr ""
+
+#: rainbowenc/genpage.py:53
+msgid "Status"
+msgstr ""
+
+#: rainbowenc/genpage.py:56
+msgid "Encoder Channel"
+msgstr ""
+
+#: rainbowenc/genpage.py:57
+msgid "Network Interface"
+msgstr ""
+
+#: rainbowenc/genpage.py:61
+msgid "Help"
+msgstr ""
+
+#: rainbowenc/genpage.py:63
+msgid "Information &amp; Manual"
+msgstr ""
+
+#: rainbowenc/genpage.py:64
+msgid "Release notes"
+msgstr ""
+
+#: rainbowenc/genpage.py:65
+msgid "License & Credits"
+msgstr ""
+
+#: rainbowenc/genpage.py:66
+msgid "Donate"
+msgstr ""
+
+#: rainbowenc/genpage.py:78
+msgid "&copy; 2010-2010 by DOOR Solutions. All rights reserved."
+msgstr ""
+
+#: rainbowenc/templates/changepass.html:32
+msgid "Change Password"
+msgstr ""
+
+#: rainbowenc/templates/changepass.html:36
+msgid "Old password"
+msgstr ""
+
+#: rainbowenc/templates/changepass.html:44 rainbowenc/templates/login.html:33
+msgid "Password"
+msgstr ""
+
+#: rainbowenc/templates/changepass.html:48
+msgid "(Confirmation)"
+msgstr ""
+
+#: rainbowenc/templates/changepass.html:49
+msgid "If you want to change the password for accessing the WebGUI, enter it here twice."
+msgstr ""
+
+#: rainbowenc/templates/login.html:29
+msgid "Name"
+msgstr ""
+
+#: rainbowenc/templates/rainbow.html:96
+msgid "System information"
+msgstr ""
+
+#: rainbowenc/templates/rainbow.html:99
+msgid "Version"
+msgstr ""
+
+#: rainbowenc/templates/rainbow.html:103
+msgid "OS Version"
+msgstr ""
+
+#: rainbowenc/templates/rainbow.html:107
+msgid "Platform"
+msgstr ""
+
+#: rainbowenc/templates/rainbow.html:111
+msgid "System time"
+msgstr ""
+
+#: rainbowenc/templates/rainbow.html:117
+msgid "Uptime"
+msgstr ""
+
+#: rainbowenc/templates/rainbow.html:123
+msgid "CPU usage"
+msgstr ""
+
+#: rainbowenc/templates/rainbow.html:129
+msgid "Memory usage"
+msgstr ""
+
+#: rainbowenc/templates/rainbow.html:135
+msgid "Load averages"
+msgstr ""
+
+#: rainbowenc/templates/reboot.html:36
+msgid "Are you sure you want to reboot the system?"
+msgstr ""
+
+#: rainbowenc/templates/selectlang.html:37
+msgid "Select one"
+msgstr ""
+
+#: rainbowenc/templates/selectlang.html:42
+msgid "Check this box to use the selected language as the default language."
+msgstr ""
+
+#: rainbowenc/templates/shutdown.html:36
+msgid "Are you sure you want to shutdown the system?"
+msgstr ""
+

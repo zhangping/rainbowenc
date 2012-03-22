@@ -6,26 +6,29 @@ import time
 import gettext
 import subprocess
 
-from rainbowenc import systat, genpage
+from rainbowenc import systat, genpage, changepass
 
 execfile ("/usr/share/rainbowenc/rainbow.conf")
 
 web.config.debug = True
+urls = (
+        '/(.*)', 'LogIn',
+)
+rainbowebui = web.application(urls, globals())
+
+# session
 web.config.session_parameters['timeout'] = conf['global']['timeout'] # 5 * 60 seconds
 web.config.session_parameters['ignore_expiry'] = False
 web.config.session_parameters['expired_message'] = """
         <html><head><meta http-equiv=\"refresh\" content=\"0;url=/\"></head><body></body></html>
         """
-
-urls = (
-        '/(.*)', 'LogIn',
-)
-
-rainbowebui = web.application(urls, globals())
 session = web.session.Session(rainbowebui, web.session.DiskStore('sessions'), initializer={'login': 0})
+
+# i18n support, template
 gettext.install ('messages', '/usr/share/rainbowenc/i18n', unicode=True)
 gettext.translation ('messages', '/usr/share/rainbowenc/i18n', languages=['zh_CN']).install(True)
 render = web.template.render("/usr/share/rainbowenc/templates", globals={'_':_})
+
 logger = logging.getLogger ("rainbow")
 
 class LogIn:
@@ -50,6 +53,12 @@ class LogIn:
                         plateform = systat.get_plateform()
                         loadavg = systat.get_loadavg()
                         return render.rainbow(osversion, plateform, uptime, loadavg, header, headernavbar, footer)
+
+                if name == "changepass.html":
+                        return render.changepass(header, headernavbar, footer)
+
+                if name == "selectlang.html":
+                        return render.selectlang(header, headernavbar, footer)
 
                 if name == "reboot.html":
                         return render.reboot(header, headernavbar, footer)
@@ -82,6 +91,17 @@ class LogIn:
 
                 if (session.login == 1) and (name == 'cpusage'):
                         return systat.get_cpusage()
+
+                if (session.login == 1) and (name == 'selectlang'):
+                        selectlang = web.input()
+                        gettext.translation ('messages', '/usr/share/rainbowenc/i18n', languages = [selectlang.language]).install(True)
+                        render = web.template.render("/usr/share/rainbowenc/templates", globals={'_':_})
+                        raise web.seeother('/selectlang.html')
+                        
+
+                if (session.login == 1) and (name == 'savepass'):
+                        password = web.input()
+                        return changepass.savepass(password)
 
                 if (session.login == 1) and (name == 'reboot'):
                         reboot_data = web.input()

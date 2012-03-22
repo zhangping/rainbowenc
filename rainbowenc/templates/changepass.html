@@ -29,11 +29,11 @@ $def with (header, headernavbar, footer)
                         <form action="savepass" method="post" name="iform" id="iform">
                           <table width="100%" border="0" cellpadding="6" cellspacing="0">
                             <tr>
-                              <td colspan="2" class="listtopic">Change Password</td>
+                              <td colspan="2" class="listtopic">$_("Change Password")</td>
                             </tr>
                             <tr id='password_old_tr'>
                               <td width='22%' valign='top' class='vncellreq'>
-                                <label for='password_old'>Old password</label>
+                                <label for='password_old'>$_("Old password")</label>
                               </td>
                               <td width='78%' class='vtable'>
                                 <input name='password_old' type='password' class='formfld' id='password_old' size='20' value=''  />
@@ -41,12 +41,12 @@ $def with (header, headernavbar, footer)
                             </tr>
                             <tr id='password_new_tr'>
                               <td width='22%' valign='top' class='vncellreq'>
-                                <label for='password_new'>Password</label>
+                                <label for='password_new'>$_("Password")</label>
                               </td>
                               <td width='78%' class='vtable'>
                                 <input name='password_new' type='password' class='formfld' id='password_new' size='20' value=''  /><br />
-                                <input name='password_confirm' type='password' class='formfld' id='password_confirm' size='20' value=''  />&nbsp;(Confirmation)<br />
-                                <span class='vexpl'>If you want to change the password for accessing the WebGUI, enter it here twice.</span>
+                                <input name='password_confirm' type='password' class='formfld' id='password_confirm' size='20' value=''  />&nbsp;$_("(Confirmation)")<br />
+                                <span class='vexpl'>$_("If you want to change the password for accessing the WebGUI, enter it here twice.")</span>
                               </td>
                             </tr>
                           </table>
