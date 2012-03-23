@@ -1,0 +1,6 @@
+
+(audio capture device)   --------------------------------------------+
+                                                                     |
+                                 + - [videoscale]                    |
+(video capture device) - [tee] - | - [videoscale] - (video encoder) -+ - (encapsulate) - (sink)
+                                 + - [videoscale]
