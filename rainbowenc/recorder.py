@@ -15,5 +15,5 @@ rainbowrec = (
 
 class RainbowRec:
         def __init__ (self, ip, port, fname):
-                self.rainbowrec_cmd = rainbowrec % ("192.168.0.95", "12345", "20120403.ts")
+                self.rainbowrec_cmd = rainbowrec % (ip, port, fname)
                 self.rainbowrec_pipeline = gst.parse_launch (self.rainbowrec_cmd)
