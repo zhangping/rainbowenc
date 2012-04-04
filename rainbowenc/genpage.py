@@ -19,12 +19,7 @@ def get_headernavbar():
     <div id="headernavbar">
       <ul id="navbarmenu">
         <li>
-	  <a href="recorder.html" onmouseover="mopen('encoder')" onmouseout="mclosetime()">""" + _("Recorder") + """</a>
-	  <div id="encoder" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
-            <a href="channel.html" target="_self" title="Channel Management">""" + _("Channel Management") + """</a>
-            <a href="encoder.html" target="_self" title="Encoder">""" + _("Encoder Management") + """</a>
-            <a href="overlay.html" target="_self" title="Mark">""" + _("Overlay Management") + """</a>
-          </div>
+	  <a href="recorder.html">""" + _("Recorder") + """</a>
         </li>
         <li>
 	  <a href="rainbow.html" onmouseover="mopen('system')" onmouseout="mclosetime()">""" + _("System") + """</a>
