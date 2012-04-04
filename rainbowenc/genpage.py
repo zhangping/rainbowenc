@@ -19,6 +19,14 @@ def get_headernavbar():
     <div id="headernavbar">
       <ul id="navbarmenu">
         <li>
+	  <a href="recorder.html" onmouseover="mopen('encoder')" onmouseout="mclosetime()">""" + _("Recorder") + """</a>
+	  <div id="encoder" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="channel.html" target="_self" title="Channel Management">""" + _("Channel Management") + """</a>
+            <a href="encoder.html" target="_self" title="Encoder">""" + _("Encoder Management") + """</a>
+            <a href="overlay.html" target="_self" title="Mark">""" + _("Overlay Management") + """</a>
+          </div>
+        </li>
+        <li>
 	  <a href="rainbow.html" onmouseover="mopen('system')" onmouseout="mclosetime()">""" + _("System") + """</a>
           <div id="system" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
             <a href="changepass.html" target="_self" title="Change Password">""" + _("Change Passsword") + """</a>
@@ -30,14 +38,6 @@ def get_headernavbar():
             <a href="reboot.html" target="_self" title="Reboot">""" + _("Reboot") + """</a>
             <a href="shutdown.html" target="_self" title="Shutdown">""" + _("Shutdown") + """</a>
             <a href="logout" target="_self" title="Logout">""" + _("Logout") + """</a>
-          </div>
-        </li>
-        <li>
-	  <a href="channel.html" onmouseover="mopen('encoder')" onmouseout="mclosetime()">""" + _("Channel") + """</a>
-	  <div id="encoder" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
-            <a href="channel.html" target="_self" title="Channel Management">""" + _("Channel Management") + """</a>
-            <a href="encoder.html" target="_self" title="Encoder">""" + _("Encoder Management") + """</a>
-            <a href="overlay.html" target="_self" title="Mark">""" + _("Overlay Management") + """</a>
           </div>
         </li>
         <!--li>
