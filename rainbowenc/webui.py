@@ -47,7 +47,12 @@ class LogIn:
                 headernavbar = genpage.get_headernavbar()
                 footer = genpage.get_footer()
 
-                if name == "" or name == "rainbow.html":
+                if name == "" or name == "recorder.html":
+                        uptime = systat.get_uptime()
+                        plateform = systat.get_plateform()
+                        return render.recorder(header, headernavbar, footer)
+
+                if name == "rainbow.html":
                         osversion = os.uname()[0] + " " + os.uname()[2] + " " + os.uname()[3]
                         uptime = systat.get_uptime()
                         plateform = systat.get_plateform()

@@ -21,6 +21,7 @@ setup(
                 ['/usr/share/rainbowenc/templates',
                         ['rainbowenc/templates/login.html',
                         'rainbowenc/templates/changepass.html',
+                        'rainbowenc/templates/recorder.html',
                         'rainbowenc/templates/selectlang.html',
                         'rainbowenc/templates/reboot.html',
                         'rainbowenc/templates/shutdown.html',
