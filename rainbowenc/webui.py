@@ -72,6 +72,7 @@ class LogIn:
                         return render.shutdown(header, headernavbar, footer)
 
                 if name == "logout":
+                        rainbowrec.destroypipe ()
                         logger.info ('logout from %s' % web.ctx.ip)
                         session.login = 0
                         session.kill()

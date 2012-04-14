@@ -41,6 +41,9 @@ class RainbowRec:
                 self.rainbowprepipe = gst.parse_launch (rainbowprecmd)
                 self.rainbowprepipe.set_state (gst.STATE_PLAYING)
 
+        def destroypipe (self):
+                self.rainbowprepipe.set_state (gst.STATE_NULL)
+
         def startrec (self):
                 self.logger.debug ("starting recoder...")
                 self.rainbowrec_pipeline.set_state (gst.STATE_PLAYING)
