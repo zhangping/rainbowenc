@@ -1,4 +1,4 @@
-$def with (header, headernavbar, footer)
+$def with (header, headernavbar, footer, clientip)
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -25,7 +25,7 @@ $def with (header, headernavbar, footer)
       }
     </script>
   </head>
-  <body bgcolor="DarkSeaGreen">
+  <body bgcolor="DarkSeaGreen" onload = "play('udp://@$clientip:60000')">
     $:header
 
     $:headernavbar

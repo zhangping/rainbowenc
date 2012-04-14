@@ -6,7 +6,7 @@ import time
 import gettext
 import subprocess
 
-from rainbowenc import systat, genpage, changepass
+from rainbowenc import systat, genpage, changepass, recorder
 
 execfile ("/usr/share/rainbowenc/rainbow.conf")
 
@@ -31,6 +31,8 @@ render = web.template.render("/usr/share/rainbowenc/templates", globals={'_':_})
 
 logger = logging.getLogger ("rainbow")
 
+rainbowrec = None
+
 class LogIn:
         """
         Web user interface, based on web.py
@@ -48,9 +50,10 @@ class LogIn:
                 footer = genpage.get_footer()
 
                 if name == "" or name == "recorder.html":
-                        uptime = systat.get_uptime()
-                        plateform = systat.get_plateform()
-                        return render.recorder(header, headernavbar, footer)
+                        if rainbowrec == None:
+                                rainbowenc = recorder.RainbowRec (web.ctx.ip, "60000", "x.ts")
+                                rainbowenc.startpre ()
+                        return render.recorder(header, headernavbar, footer, web.ctx.ip)
 
                 if name == "rainbow.html":
                         osversion = os.uname()[0] + " " + os.uname()[2] + " " + os.uname()[3]
