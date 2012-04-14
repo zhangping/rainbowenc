@@ -64,8 +64,9 @@ pre {
 }
 .formbtns {
 	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
-	font-size: 10px;
+	font-size: 14px;
 	font-weight: bold;
+        width: 120px;
 }
 .red {
 	color: #CC0000;

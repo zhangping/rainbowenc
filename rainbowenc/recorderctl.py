@@ -31,22 +31,16 @@ class RainbowRec:
         """
         Rainbow Recoder class.
         """
-        def __init__ (self, ip, port, fname):
+        def __init__ (self):
                 self.logger = logging.getLogger('rainbowrec initializing...')
-                self.rainbowpre_cmd = rainbowpre % (ip, port)
-                self.rainbowrec_cmd = rainbowrec % (ip, port, fname)
-                self.rainbowpre_pipeline = gst.parse_launch (self.rainbowpre_cmd)
-                self.rainbowrec_pipeline = gst.parse_launch (self.rainbowrec_cmd)
+                self.satus = "ready"
+                self.rainbowprepipe = gst.Pipeline ()
 
-        def startpre (self):
-                self.logger.debug ("starting preview...")
-                self.rainbowpre_pipeline.set_state (gst.STATE_PLAYING)
-                self.logger.debug ("start preview, done.")
+        def createprepipe (self, ip, port):
+                rainbowprecmd = rainbowpre % (ip, port)
+                self.rainbowprepipe = gst.parse_launch (rainbowprecmd)
+                self.rainbowprepipe.set_state (gst.STATE_PLAYING)
 
-        def stoprec (self):
-                self.logger.debug ("stoping preview...")
-                self.rainbowpre_cmd.set_state (gst.STATE_NULL)
-                self.logger.debug ("stop preview, done.")
         def startrec (self):
                 self.logger.debug ("starting recoder...")
                 self.rainbowrec_pipeline.set_state (gst.STATE_PLAYING)

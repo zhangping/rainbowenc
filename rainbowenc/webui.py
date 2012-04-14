@@ -6,7 +6,7 @@ import time
 import gettext
 import subprocess
 
-from rainbowenc import systat, genpage, changepass, recorder
+from rainbowenc import systat, genpage, changepass, recorderctl
 
 execfile ("/usr/share/rainbowenc/rainbow.conf")
 
@@ -31,13 +31,12 @@ render = web.template.render("/usr/share/rainbowenc/templates", globals={'_':_})
 
 logger = logging.getLogger ("rainbow")
 
-rainbowrec = None
+rainbowrec = recorderctl.RainbowRec ()
 
 class LogIn:
         """
         Web user interface, based on web.py
         """
-
         def GET (self, name):
                 """
                 HTTP GET method.
@@ -48,12 +47,10 @@ class LogIn:
                 header = genpage.get_header()
                 headernavbar = genpage.get_headernavbar()
                 footer = genpage.get_footer()
+                logger.debug ("get %s" % name)
 
-                if name == "" or name == "recorder.html":
-                        if rainbowrec == None:
-                                rainbowenc = recorder.RainbowRec (web.ctx.ip, "60000", "x.ts")
-                                rainbowenc.startpre ()
-                        return render.recorder(header, headernavbar, footer, web.ctx.ip)
+                if name == "" or name == "recorderctl.html":
+                        return render.recorderctl(header, headernavbar, footer, web.ctx.ip)
 
                 if name == "rainbow.html":
                         osversion = os.uname()[0] + " " + os.uname()[2] + " " + os.uname()[3]
@@ -84,6 +81,18 @@ class LogIn:
                 """
                 HTTP POST method.
                 """
+                logger.debug ("post")
+                if (session.login == 1) and (name == "recorderctl"):
+                        logger.debug ("recorderctl")
+                        recorderctl_data = web.input ()
+                        logger.debug (recorderctl_data.Submit)
+                        if (recorderctl_data.Submit == "Recorder"):
+                                logger.debug ('Recorder')
+                                rainbowrec.startrec ()
+                        if (recorderctl_data.Submit == "Stop Recorder"):
+                                logger.debug ('Stop Recorder')
+                                rainbowrec.stoprec ()
+                        raise web.seeother ('recorderctl.html')
 
                 if (session.login == 1) and (name == 'systime'):
                         return time.ctime()
@@ -136,9 +145,9 @@ class LogIn:
                         return 'Invalid password'
 
                 session.login = 1
+                rainbowrec.createprepipe (web.ctx.ip, "60000")
                 logger.info ('login from %s' % web.ctx.ip)
                 raise web.seeother('/rainbow.html')
-
 
 def startwebui ():
         logger.info ('timeout %d' % conf['global']['timeout'])

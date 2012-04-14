@@ -19,7 +19,11 @@ def get_headernavbar():
     <div id="headernavbar">
       <ul id="navbarmenu">
         <li>
-	  <a href="recorder.html">""" + _("Recorder") + """</a>
+	  <a href="recorderctl.html" onmouseover="mopen('recorder')" onmouseout="mclosetime()">""" + _("Recorder") + """</a>
+          <div id="recorder" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="recorderctl.html" target="_self" title="Recorder Control">""" + _("Recorder Control") + """</a>
+            <a href="recorderfile.html" target="_blank" title="Recorder File Manager">""" + _("Recorder File Manager") + """</a>
+          </div>
         </li>
         <li>
 	  <a href="rainbow.html" onmouseover="mopen('system')" onmouseout="mclosetime()">""" + _("System") + """</a>
@@ -37,7 +41,7 @@ def get_headernavbar():
         </li>
         <!--li>
           <a href="rainbow.html" onmouseover="mopen('advanced')" onmouseout="mclosetime()">Advanced</a>
-            <div id="advanced" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+          <div id="advanced" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
             <a href="system_edit.php" target="_self" title="File Editor">File Editor</a>
             <a href="quixplorer" target="_blank" title="File Manager">File Manager</a>
             <span class="tabseparator">&nbsp;</span>
