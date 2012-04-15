@@ -30,6 +30,8 @@ $def with (header, headernavbar, footer, clientip)
            type: "POST",
            timeout: 1000,
            success: function (data) {
+                      $$("#record").attr("disabled", true);
+                      $$("#stoprecord").attr("disabled", false);
                       alert (data);
                     }
         });
@@ -41,6 +43,8 @@ $def with (header, headernavbar, footer, clientip)
            type: "POST",
            timeout: 1000,
            success: function (data) {
+                      $$("#record").attr("disabled", false);
+                      $$("#stoprecord").attr("disabled", true);
                       alert (data);
                     }
         });
@@ -77,12 +81,12 @@ $def with (header, headernavbar, footer, clientip)
                     <div id="submit">
                       <tr>
                         <td align = "center">
-                          <button class="formbtns" id="recorder" type="button" onclick="record();">Record</button>
+                          <button class="formbtns" id="record" type="button" onclick="record();">Record</button>
                         </td>
                       </tr>
                       <tr>
                         <td align = "center">
-                          <button class="formbtns" id="stoprecord" type="button" onclick="stoprecord();">Stop Record</button>
+                          <button class="formbtns" id="stoprecord" type="button" onclick="stoprecord();" disabled="true">Stop Record</button>
                         </td>
                       </tr>
                     </div>
