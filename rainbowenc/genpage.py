@@ -22,7 +22,7 @@ def get_headernavbar():
 	  <a href="recorderctl.html" onmouseover="mopen('recorder')" onmouseout="mclosetime()">""" + _("Recorder") + """</a>
           <div id="recorder" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
             <a href="recorderctl.html" target="_self" title="Recorder Control">""" + _("Recorder Control") + """</a>
-            <a href="recorderfile.html" target="_blank" title="Recorder File Manager">""" + _("Recorder File Manager") + """</a>
+            <a href="recordfileman.html" target="_self" title="Recorder File Manager">""" + _("Recorder File Manager") + """</a>
           </div>
         </li>
         <li>

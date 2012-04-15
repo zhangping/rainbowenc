@@ -52,6 +52,10 @@ class LogIn:
                 if name == "" or name == "recorderctl.html":
                         return render.recorderctl(header, headernavbar, footer, web.ctx.ip)
 
+                if name == "" or name == "recordfileman.html":
+                        recordfiles = os.listdir ("/var/www")
+                        return render.recordfileman(header, headernavbar, footer, recordfiles)
+
                 if name == "rainbow.html":
                         osversion = os.uname()[0] + " " + os.uname()[2] + " " + os.uname()[3]
                         uptime = systat.get_uptime()

@@ -22,6 +22,7 @@ setup(
                         ['rainbowenc/templates/login.html',
                         'rainbowenc/templates/changepass.html',
                         'rainbowenc/templates/recorderctl.html',
+                        'rainbowenc/templates/recordfileman.html',
                         'rainbowenc/templates/selectlang.html',
                         'rainbowenc/templates/reboot.html',
                         'rainbowenc/templates/shutdown.html',
