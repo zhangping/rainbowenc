@@ -23,6 +23,28 @@ $def with (header, headernavbar, footer, clientip)
           tgt.playlist.add(uri, uri, "");
         tgt.playlist.play();
       }
+
+      function record () {
+        $$.ajax ({
+           url: "/record",
+           type: "POST",
+           timeout: 1000,
+           success: function (data) {
+                      alert (data);
+                    }
+        });
+      }
+
+      function stoprecord () {
+        $$.ajax ({
+           url: "/stoprecord",
+           type: "POST",
+           timeout: 1000,
+           success: function (data) {
+                      alert (data);
+                    }
+        });
+      }
     </script>
   </head>
   <body bgcolor="DarkSeaGreen" onload = "play('udp://@$clientip:60000')">
@@ -52,20 +74,18 @@ $def with (header, headernavbar, footer, clientip)
                 </td>
                 <td width="20%">
                   <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
-                    <form action="recorderctl" method="post">
-                      <div id="submit">
+                    <div id="submit">
                       <tr>
                         <td align = "center">
-                          <input class="formbtns" name="Submit" type="submit" class="formbtn" value="Recorder" />
+                          <button class="formbtns" id="recorder" type="button" onclick="record();">Record</button>
                         </td>
                       </tr>
                       <tr>
                         <td align = "center">
-                          <input class="formbtns" name="Submit" type="submit" class="formbtn" value="Stop Recorder" />
+                          <button class="formbtns" id="stoprecord" type="button" onclick="stoprecord();">Stop Record</button>
                         </td>
                       </tr>
-                      </div>
-                    </form>
+                    </div>
                   </table>
                 </td>
               </tr>

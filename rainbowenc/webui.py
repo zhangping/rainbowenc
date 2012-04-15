@@ -83,17 +83,13 @@ class LogIn:
                 HTTP POST method.
                 """
                 logger.debug ("post")
-                if (session.login == 1) and (name == "recorderctl"):
-                        logger.debug ("recorderctl")
-                        recorderctl_data = web.input ()
-                        logger.debug (recorderctl_data.Submit)
-                        if (recorderctl_data.Submit == "Recorder"):
-                                logger.debug ('Recorder')
-                                rainbowrec.startrec ()
-                        if (recorderctl_data.Submit == "Stop Recorder"):
-                                logger.debug ('Stop Recorder')
-                                rainbowrec.stoprec ()
-                        raise web.seeother ('recorderctl.html')
+                if (session.login == 1) and (name == "record"):
+                        logger.debug ("record")
+                        return rainbowrec.startrec ()
+
+                if (session.login == 1) and (name == "stoprecord"):
+                        logger.debug ("stoprecord")
+                        return rainbowrec.stoprec ()
 
                 if (session.login == 1) and (name == 'systime'):
                         return time.ctime()

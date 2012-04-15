@@ -1,6 +1,7 @@
 
 import logging
 import gst
+import time
 
 # preview pipeline
 rainbowpre = ( 
@@ -12,7 +13,12 @@ rainbowpre = (
 "! videoscale ! video/x-raw-yuv,width=720,height=576 ! queue "
 "! x264enc byte-stream=true threads=0 key-int-max=50 bitrate=1200 bframes=1 qp-min=1 qp-max=51 qp-step=50 vbv-buf-capacity=300 threads=4 ! queue "
 "! muxer. "
-"s. ! queue ! udpsink host=localhost port=60001"
+"s. ! queue ! udpsink host=127.0.0.1 port=60001"
+)
+
+# recorder pipeline
+rainbowrec = (
+"udpsrc uri=udp://127.0.0.1:60001 ! filesink location=%s"
 )
 
 class RainbowRec:
@@ -23,6 +29,7 @@ class RainbowRec:
                 self.logger = logging.getLogger('rainbowrec initializing...')
                 self.satus = "ready"
                 self.rainbowprepipe = gst.Pipeline ()
+                self.rainbowrecpipe = gst.Pipeline ()
 
         def createprepipe (self, ip, port):
                 rainbowprecmd = rainbowpre % (ip, port)
@@ -33,11 +40,14 @@ class RainbowRec:
                 self.rainbowprepipe.set_state (gst.STATE_NULL)
 
         def startrec (self):
-                self.logger.debug ("starting recoder...")
-                self.rainbowrec_pipeline.set_state (gst.STATE_PLAYING)
-                self.logger.debug ("start recoder, done.")
+                recfilename = "/var/www/%s.mpg" % time.strftime ("%Y%m%d_%H%M%S", time.gmtime())
+                self.logger.debug ("starting recoding %s" % recfilename)
+                rainbowreccmd = rainbowrec % recfilename
+                self.rainbowrecpipe = gst.parse_launch (rainbowreccmd)
+                self.rainbowrecpipe.set_state (gst.STATE_PLAYING)
+                return "ok"
 
         def stoprec (self):
-                self.logger.debug ("stoping recoder...")
-                self.rainbowrec_cmd.set_state (gst.STATE_NULL)
-                self.logger.debug ("stop recoder, done.")
+                self.rainbowrecpipe.set_state (gst.STATE_NULL)
+                self.logger.debug ("stop recoder.")
+                return "ok"
