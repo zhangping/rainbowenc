@@ -19,11 +19,20 @@ $def with (header, headernavbar, footer, recordfiles)
         else
           tgt = "vlc_FF";
         var tgt = document.getElementById(tgt);
-        if (document.all)
-          tgt.playlist.add(uri, uri, new Array());
-        else
-          tgt.playlist.add(uri, uri, "");
-        tgt.playlist.play();
+        if (document.all) {
+          while (tgt.playlist.items.count > 0) {
+            tgt.playlist.stop ();
+            tgt.playlist.clear ();
+          }
+          id = tgt.playlist.add(uri, uri, new Array());
+        } else {
+          while (tgt.playlist.items.count > 0) {
+            tgt.playlist.stop ();
+            tgt.playlist.clear ();
+          }
+          id = tgt.playlist.add(uri, uri, "");
+        }
+        tgt.playlist.playItem(id);
       }
 
       function download () {
