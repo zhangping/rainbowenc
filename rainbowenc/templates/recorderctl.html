@@ -11,6 +11,16 @@ $def with (header, headernavbar, footer, clientip)
     <script type="text/javascript" src="/static/navbar.js"></script>
     <script type="text/javascript" src="/static/jquery.js"></script>
     <script language="javascript">
+      $$(document).ready(function() {
+        setInterval(function() {
+          $$.ajax({
+            url: "/systime",
+            type: "POST",
+            timeout: 1000
+          });
+        }, 2000);
+      });
+
       function play(uri) {
         if (document.all)
           tgt = "vlc_IE";
