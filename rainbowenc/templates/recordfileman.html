@@ -36,16 +36,19 @@ $def with (header, headernavbar, footer, recordfiles)
       }
 
       function download () {
-        $$.ajax ({
-           url: "/record",
-           type: "POST",
-           timeout: 1000,
-           success: function (data) {
-                      $$("#record").attr("disabled", true);
-                      $$("#stoprecord").attr("disabled", false);
-                      alert (data);
-                    }
-        });
+        filename = $$("#recordfile").val();
+        alert (filename);
+      }
+
+      function remove () {
+        thefilename = $$("#recordfile").val();
+        if (confirm ("$_('Really delete ')" + thefilename)) {
+          $$.post ("/recordfileman",
+                   {filename: thefilename},
+                   function (data) {
+                     location.reload ();
+                   });
+        }
       }
     </script>
   </head>

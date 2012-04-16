@@ -95,6 +95,12 @@ class LogIn:
                         logger.debug ("stoprecord")
                         return rainbowrec.stoprec ()
 
+                if (session.login == 1) and (name == "recordfileman"):
+                        recordfileman = web.input()
+                        logger.debug ("remove file %s" % recordfileman.filename)
+                        os.remove ("/var/www/%s" % recordfileman.filename)
+                        return "success"
+
                 if (session.login == 1) and (name == 'systime'):
                         return time.ctime()
 
