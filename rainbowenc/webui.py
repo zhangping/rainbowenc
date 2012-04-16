@@ -12,6 +12,7 @@ execfile ("/usr/share/rainbowenc/rainbow.conf")
 
 web.config.debug = True
 urls = (
+        '/download', 'DownLoad',
         '/(.*)', 'LogIn',
 )
 rainbowebui = web.application(urls, globals())
@@ -32,6 +33,29 @@ render = web.template.render("/usr/share/rainbowenc/templates", globals={'_':_})
 logger = logging.getLogger ("rainbow")
 
 rainbowrec = recorderctl.RainbowRec ()
+
+class DownLoad:
+        """
+        download, use yield.
+        """
+        def GET (self):
+                 if session.login:
+                         filename = web.input ()
+                         n = os.stat("/var/www/%s" % filename.name).st_size
+                         logger.debug ("download file %s, size %d" % (filename.name, n))
+                         web.header ("Accept-Ranges", "bytes")
+                         web.header ("Content-Length", n)
+                         web.header ("Connection", "close")
+                         web.header ("Content-Type", "application/force-download")
+                         fd = open ("/var/www/%s" % filename.name, "rb")
+                         while (n >= 1024*1024):
+                                 if (n >= 1024*1024):
+                                         i = 1024*1024
+                                         n -= i
+                                         yield fd.read (i)
+                                 else:
+                                         yield fd.read (n)
+                                         fd.close ()
 
 class LogIn:
         """

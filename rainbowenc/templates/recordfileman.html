@@ -37,7 +37,7 @@ $def with (header, headernavbar, footer, recordfiles)
 
       function download () {
         filename = $$("#recordfile").val();
-        alert (filename);
+        window.open ("/download?name=" + filename);
       }
 
       function remove () {
