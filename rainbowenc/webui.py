@@ -110,7 +110,7 @@ class LogIn:
                 """
                 HTTP POST method.
                 """
-                logger.debug ("post")
+                logger.debug ("post %s" % name)
                 if (session.login == 1) and (name == "record"):
                         logger.debug ("record")
                         return rainbowrec.startrec ()
