@@ -36,6 +36,7 @@ class RainbowRec:
                 self.rainbowprepipe = gst.parse_launch (rainbowprecmd)
                 self.rainbowprepipe.set_state (gst.STATE_PLAYING)
 
+        # stop real time encoder
         def destroypipe (self):
                 self.rainbowprepipe.set_state (gst.STATE_NULL)
 
@@ -47,6 +48,7 @@ class RainbowRec:
                 self.rainbowrecpipe.set_state (gst.STATE_PLAYING)
                 return "ok"
 
+        # stop recoder
         def stoprec (self):
                 self.rainbowrecpipe.set_state (gst.STATE_NULL)
                 self.logger.debug ("stop recoder.")
