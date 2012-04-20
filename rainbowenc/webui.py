@@ -100,7 +100,7 @@ class LogIn:
                         return render.shutdown(header, headernavbar, footer)
 
                 if name == "logout":
-                        rainbowrec.destroypipe ()
+                        rainbowrec.destroypipenow ()
                         logger.info ('logout from %s' % web.ctx.ip)
                         session.login = 0
                         session.kill()
@@ -126,6 +126,7 @@ class LogIn:
                         return "success"
 
                 if (session.login == 1) and (name == 'systime'):
+                        rainbowrec.gotheartbeat ()
                         return time.ctime()
 
                 if (session.login == 1) and (name == 'uptime'):
