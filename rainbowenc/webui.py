@@ -5,10 +5,13 @@ import hashlib
 import time
 import gettext
 import subprocess
+import __builtin__
+
+execfile ("/usr/share/rainbowenc/rainbow.conf")
+__builtin__.rainbowconf = conf
 
 from rainbowenc import systat, genpage, changepass, recorderctl
 
-execfile ("/usr/share/rainbowenc/rainbow.conf")
 
 web.config.debug = True
 urls = (
@@ -77,7 +80,7 @@ class LogIn:
                         return render.recorderctl(header, headernavbar, footer, web.ctx.ip)
 
                 if name == "" or name == "recordfileman.html":
-                        recordfiles = os.listdir ("/var/www")
+                        recordfiles = os.listdir (rainbowconf['global']['recorderpath'])
                         return render.recordfileman(header, headernavbar, footer, recordfiles)
 
                 if name == "rainbow.html":

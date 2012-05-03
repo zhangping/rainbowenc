@@ -49,7 +49,9 @@ setup(
                         'rainbowenc/i18n/en_US/LC_MESSAGES/messages.po']],
                 ['/usr/share/rainbowenc/i18n/zh_CN/LC_MESSAGES',
                         ['rainbowenc/i18n/zh_CN/LC_MESSAGES/messages.mo',
-                        'rainbowenc/i18n/zh_CN/LC_MESSAGES/messages.po']],],
+                        'rainbowenc/i18n/zh_CN/LC_MESSAGES/messages.po']],
+                ['/var/recorder',
+                        []]],
         classifiers = [
                 'Development Status :: Under development',
                 'Intended Audience :: Users',

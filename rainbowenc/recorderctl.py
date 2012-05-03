@@ -61,7 +61,7 @@ class RainbowRec:
                         self.encoding = 0
 
         def startrec (self):
-                recfilename = "/var/www/%s.mpg" % time.strftime ("%Y%m%d_%H%M%S", time.gmtime())
+                recfilename = "%s%s.mpg" % (rainbowconf['global']['recorderpath'], time.strftime ("%Y%m%d_%H%M%S", time.gmtime()))
                 self.logger.debug ("starting recoding %s" % recfilename)
                 rainbowreccmd = rainbowrec % recfilename
                 self.rainbowrecpipe = gst.parse_launch (rainbowreccmd)
