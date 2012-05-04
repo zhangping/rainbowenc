@@ -15,7 +15,7 @@ from rainbowenc import systat, genpage, changepass, recorderctl
 
 web.config.debug = True
 urls = (
-        '/download', 'DownLoad',
+        '/recorder/(.*)', 'DownLoad',
         '/(.*)', 'LogIn',
 )
 rainbowebui = web.application(urls, globals())
@@ -41,16 +41,15 @@ class DownLoad:
         """
         download, use yield.
         """
-        def GET (self):
+        def GET (self, name):
                  if session.login:
-                         filename = web.input ()
-                         n = os.stat("/var/www/%s" % filename.name).st_size
-                         logger.debug ("download file %s, size %d" % (filename.name, n))
+                         n = os.stat("%s%s" % (rainbowconf['global']['recorderpath'], name)).st_size
+                         logger.debug ("download file %s, size %d" % (name, n))
                          web.header ("Accept-Ranges", "bytes")
                          web.header ("Content-Length", n)
                          web.header ("Connection", "close")
                          web.header ("Content-Type", "application/force-download")
-                         fd = open ("/var/www/%s" % filename.name, "rb")
+                         fd = open ("%s%s" % (rainbowconf['global']['recorderpath'], name), "rb")
                          while (n >= 1024*1024):
                                  if (n >= 1024*1024):
                                          i = 1024*1024
