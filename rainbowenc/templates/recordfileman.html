@@ -22,7 +22,7 @@ $def with (header, headernavbar, footer, recordfiles)
       });
 
       function play() {
-        uri = "http://192.168.12.175/" + $$("#recordfile").val();
+        uri = location.protocol + "//" + location.host + "/recorder/" + $$("#recordfile").val();
         alert (uri);
         if (document.all)
           tgt = "vlc_IE";

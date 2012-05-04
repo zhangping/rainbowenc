@@ -42,22 +42,21 @@ class DownLoad:
         download, use yield.
         """
         def GET (self, name):
-                 if session.login:
-                         n = os.stat("%s%s" % (rainbowconf['global']['recorderpath'], name)).st_size
-                         logger.debug ("download file %s, size %d" % (name, n))
-                         web.header ("Accept-Ranges", "bytes")
-                         web.header ("Content-Length", n)
-                         web.header ("Connection", "close")
-                         web.header ("Content-Type", "application/force-download")
-                         fd = open ("%s%s" % (rainbowconf['global']['recorderpath'], name), "rb")
-                         while (n >= 1024*1024):
-                                 if (n >= 1024*1024):
-                                         i = 1024*1024
-                                         n -= i
-                                         yield fd.read (i)
-                                 else:
-                                         yield fd.read (n)
-                                         fd.close ()
+                 n = os.stat("%s%s" % (rainbowconf['global']['recorderpath'], name)).st_size
+                 logger.debug ("download file %s, size %d" % (name, n))
+                 web.header ("Accept-Ranges", "bytes")
+                 web.header ("Content-Length", n)
+                 web.header ("Connection", "close")
+                 web.header ("Content-Type", "application/force-download")
+                 fd = open ("%s%s" % (rainbowconf['global']['recorderpath'], name), "rb")
+                 while (n >= 1024*1024):
+                         if (n >= 1024*1024):
+                                 i = 1024*1024
+                                 n -= i
+                                 yield fd.read (i)
+                         else:
+                                 yield fd.read (n)
+                                 fd.close ()
 
 class LogIn:
         """
